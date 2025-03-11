@@ -15,3 +15,24 @@ function count_words(string_of_words) {
     }
     return count;
 }
+function count_words_by(string_of_words, letter = ' ') {
+    if (typeof string_of_words !== 'string' || typeof letter !== 'string') {
+      return 0;
+    }
+    
+    let count = 0;
+    let isWord = false;
+    
+    for (let i = 0; i < string_of_words.length; i++) {
+      if (string_of_words[i] !== letter) {
+        if (!isWord) {
+          count++;
+          isWord = true;
+        }
+      } else {
+        isWord = false;
+      }
+    }
+    
+    return count;
+  }
