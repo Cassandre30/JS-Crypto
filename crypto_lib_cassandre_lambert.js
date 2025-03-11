@@ -68,3 +68,24 @@ function count_words_by(string_of_words, letter = ' ') {
   function remove(string_of_words, caracter) {
     return string_of_words.split(caracter).join('');
 }
+console.group('Partie 6');
+console.assert(remove('Turing believes machines think','z') === 'Turing believes machines think');
+console.assert(remove('Turing believes machines think','e') === 'Turing blivs machins think');
+console.assert(remove('Turing lies with men', 'i') === 'Turng les wth men');
+console.assert(remove('Therefore machines do not think', ' ') === 'Thereforemachinesdonotthink');
+console.assert(remove('aeeiuouyuioz', 'o') === 'aeeiuuyuiz');
+console.assert(remove('', '') === '');
+console.assert(remove('    ', ' ') === '');
+console.assert(remove('ccccc', 'c') === '');
+console.assert(remove('c c c c c', 'c') === '    ');
+console.groupEnd();
+
+function remove_many(string_of_words, characters) {
+    let result = '';
+    for (let char of string_of_words) {
+        if (!characters.includes(char)) {
+            result += char;
+        }
+    }
+    return result;
+}
