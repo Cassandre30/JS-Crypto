@@ -108,3 +108,35 @@ function crypto(a_string, a_number) {
         }
     }).join('');
 }
+function crypto(a_string, a_number) {
+    return a_string.split('').map(char => {
+        if (char >= 'a' && char <= 'z') {
+            return String.fromCharCode(((char.charCodeAt(0) - 97 + a_number) % 26) + 97);
+        } else if (char >= 'A' && char <= 'Z') {
+            return String.fromCharCode(((char.charCodeAt(0) - 65 + a_number) % 26) + 65);
+        } else {
+            return char;
+        }
+    }).join('');
+}
+
+// Tests
+console.group('Partie 8');
+console.assert(crypto('turing believes machines think',1) === 'uvsjoh cfmjfwft nbdijoft uijol');
+console.assert(crypto('turing believes machines think',2) === 'vwtkpi dgnkgxgu ocejkpgu vjkpm');
+console.assert(crypto('turing believes machines think',3) === 'wxulqj eholhyhv pdfklqhv wklqn');
+console.assert(crypto('turing believes machines think',11) === 'efctyr mpwtpgpd xlnstypd estyv');
+console.assert(crypto('turing believes machines think',22) === 'pqnejc xahearao iwydejao pdejg');
+console.assert(crypto('turing believes machines think',25) === 'stqhmf adkhdudr lzbghmdr sghmj');
+console.assert(crypto('turing believes machines think',26) === 'turing believes machines think');
+console.assert(crypto('turing believes machines think',27) === 'uvsjoh cfmjfwft nbdijoft uijol');
+console.groupEnd();
+
+const decrypt = (a_string, a_number) => a_string.replace(/[a-zA-Z]/g, c => String.fromCharCode((c.charCodeAt(0) - (c < 'a' ? 65 : 97) - a_number) % 26 + (c < 'a' ? 65 : 97)));
+
+function enigma(crypted_string) {
+    for (let key = 1; key < 26; key++)
+      console.log(`Clé ${key}:`, crypted_string.replace(/[a-z]/gi, c =>
+        String.fromCharCode((c.charCodeAt(0) - (c < 'a' ? 65 : 97) - key + 26) % 26 + (c < 'a' ? 65 : 97))));
+  }
+  
