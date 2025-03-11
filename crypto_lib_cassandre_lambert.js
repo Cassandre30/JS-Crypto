@@ -89,3 +89,22 @@ function remove_many(string_of_words, characters) {
     }
     return result;
 }
+// Tests
+console.log(remove_many('Therefore machines do not think', 'dumber')); // 'Thfo achins o not think'
+console.log(remove_many('Turing lies with men', 'good people read good books')); // 'Tuiniwithmn'
+console.log(remove_many('Turing believes machines think','e')); // 'Turing blivs machins think'
+console.log(remove_many('aeeiuouyuioz', 'o')); // 'aeeiuuyuiz'
+
+function crypto(a_string, a_number) {
+    return a_string.split('').map(char => {
+        if (char.match(/[a-z]/)) {
+            let start = 'a'.charCodeAt(0);
+            return String.fromCharCode(((char.charCodeAt(0) - start + a_number) % 26) + start);
+        } else if (char.match(/[A-Z]/)) {
+            let start = 'A'.charCodeAt(0);
+            return String.fromCharCode(((char.charCodeAt(0) - start + a_number) % 26) + start);
+        } else {
+            return char;
+        }
+    }).join('');
+}
