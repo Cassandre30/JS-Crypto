@@ -36,3 +36,24 @@ function count_words_by(string_of_words, letter = ' ') {
     
     return count;
   }
+  // Tests
+  console.group('Partie 3');
+  console.assert(count_words_by('Turing believes machines think', 'i') === 5);
+  console.assert(count_words_by('Turingbelievesmachinesthink', 'i') === 5);
+  console.assert(count_words_by('Therefore machines do not think', 'e') === 5);
+  console.groupEnd();
+  
+  function is_a_vowel(letter) {
+    const vowels = 'aeiouAEIOU';
+    return vowels.includes(letter);
+  }
+  
+  function count_vowels(string_of_words) {
+    let count = 0;
+    for (let char of string_of_words) {
+      if (is_a_vowel(char)) {
+        count++;
+      }
+    }
+    return count;
+  }
