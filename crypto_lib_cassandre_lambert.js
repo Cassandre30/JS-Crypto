@@ -57,3 +57,14 @@ function count_words_by(string_of_words, letter = ' ') {
     }
     return count;
   }
+  console.group('Partie 4');
+  console.assert(count_vowels('Turing believes machines think') === 10);
+  console.assert(count_vowels('Turing lies with men') === 6);
+  console.assert(count_vowels('Therefore machines do not think') === 10);
+  console.groupEnd();
+  
+  const count_consonants = (string_of_words) => string_of_words.replace(new RegExp(`[${vowels.join('')} ]`, 'gi'), '').length;
+
+  function remove(string_of_words, caracter) {
+    return string_of_words.split(caracter).join('');
+}
